@@ -1,0 +1,89 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Крестики нолики</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="winner">
+        <div class="info">
+            <div class="text"></div>
+            <button>Продолжить</button>
+        </div>
+    </div>
+
+<div class="wrap">
+
+    <div class="restart"><button>Начать заново</button></div>
+
+    <div><h1>КРЕСТИКИ-НОЛИКИ</h1></div> 
+
+    <div class="round">Раунд <span></span> из 5</div>
+    <div class="turn1">Игрок ходит <span>крестиками</span></div>
+    <div class="turn2">Компьютер ходит <span>ноликами</span></div>
+
+    <div class="playField">
+
+        <div id="1" class="moveSquer moveEnabled"></div>
+        <div id="2" class="moveSquer moveEnabled"></div>
+        <div id="3" class="moveSquer moveEnabled"></div>
+        <div id="4" class="moveSquer moveEnabled"></div>
+        <div id="5" class="moveSquer moveEnabled"></div>
+        <div id="6" class="moveSquer moveEnabled"></div>
+        <div id="7" class="moveSquer moveEnabled"></div>
+        <div id="8" class="moveSquer moveEnabled"></div>
+        <div id="9" class="moveSquer moveEnabled"></div>
+
+    </div>
+
+    <div><h2>Таблица результатов</h2></div> 
+
+    <div class="table">
+
+        <div class="colRound">
+            <div class="head">Раунд</div>
+            <div class="number">1</div>
+            <div class="number">2</div>
+            <div class="number">3</div>
+            <div class="number">4</div>
+            <div class="number">5</div>
+        </div>
+
+        <div class="lineHor1"></div>
+
+        <div class="lineVer1"></div>
+
+        <div class="colPlayer">
+            <div class="head">Участник</div>
+            <div class="player"><p>игрок</p><br><p>компьютер</p></div>
+            <div class="player"><p>игрок</p><br><p>компьютер</p></div>
+            <div class="player"><p>игрок</p><br><p>компьютер</p></div>
+            <div class="player"><p>игрок</p><br><p>компьютер</p></div>
+            <div class="player"><p>игрок</p><br><p>компьютер</p></div>
+        </div>
+
+        <div class="lineVer2"></div>
+
+        <div class="colresult">
+            <div class="head">Результат</div>
+            <div class="result"><p></p><br><p></p></div>
+            <div class="result"><p></p><br><p></p></div>
+            <div class="result"><p></p><br><p></p></div>
+            <div class="result"><p></p><br><p></p></div>
+            <div class="result"><p></p><br><p></p></div>
+        </div>
+
+        <div class="resultTotal">
+            <div class="result">Победитель: <span>???</span></div>
+        </div>
+
+    </div>
+
+</div>
+    
+    <script src="code.js"></script>
+</body>
+</html>
