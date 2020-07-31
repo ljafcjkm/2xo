@@ -1,3 +1,5 @@
+render()
+
 const playField = document.querySelector('.playField')
 const popUpWinner = document.querySelector('.winner')
 const buttonEndRound = document.querySelector('button')
@@ -9,17 +11,6 @@ const winCombinations = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [
 const resultStyle = document.querySelectorAll('.result > p')
 const buttonNewGame = document.querySelector('.restart > button')
 
-tableResult[0].children[0].innerText = localStorage.getItem('player1')
-tableResult[0].children[2].innerText = localStorage.getItem('PC1')
-tableResult[1].children[0].innerText = localStorage.getItem('player2')
-tableResult[1].children[2].innerText = localStorage.getItem('PC2')
-tableResult[2].children[0].innerText = localStorage.getItem('player3')
-tableResult[2].children[2].innerText = localStorage.getItem('PC3')
-tableResult[3].children[0].innerText = localStorage.getItem('player4')
-tableResult[3].children[2].innerText = localStorage.getItem('PC4')
-tableResult[4].children[0].innerText = localStorage.getItem('player5')
-tableResult[4].children[2].innerText = localStorage.getItem('PC5')
-
 let whoTurn = ''
 let win = ''
 
@@ -27,6 +18,57 @@ let HumanMove = ''
 let PcMove = ''
 
 game()
+
+function createResultTable(){
+    let $colresult = document.querySelector('.colresult')
+    let $colPlayer = document.querySelector('.colPlayer')
+    let $colRound = document.querySelector('.colRound')
+    $colRound.innerHTML += `<div class="head">Раунд</div>`
+    $colPlayer.innerHTML += `<div class="head">Участник</div>`
+    $colresult.innerHTML += `<div class="head">Результат</div>`
+    for(let i = 1; i <= 5; i++){
+        $colRound.innerHTML += `<div class="number">${i}</div>`
+        $colPlayer.innerHTML += `<div class="player"><p>игрок</p><br><p>компьютер</p></div>`
+        $colresult.innerHTML += `<div class="result"><p>${localStorage.getItem('player'+i)}</p><br><p>${localStorage.getItem('PC'+i)}</p></div>`
+    }
+}
+
+function render() {
+
+    let $body = document.body
+    $body.innerHTML = `
+        <div class="winner"><div class="info"><div class="text"></div><button>Продолжить</button></div></div>
+
+        <div class="wrap">
+            <div class="restart"><button>Начать заново</button></div>
+            <div><h1>КРЕСТИКИ-НОЛИКИ</h1></div> 
+            <div class="round">Раунд <span></span> из 5</div>
+            <div class="turn1">Игрок ходит <span>крестиками</span></div>
+            <div class="turn2">Компьютер ходит <span>ноликами</span></div>
+            <div class="playField"></div>
+            <div><h2>Таблица результатов</h2></div> 
+            <div class="table">
+                <div class="colRound"></div>
+                <div class="lineHor1"></div>
+                <div class="lineVer1"></div>
+                <div class="colPlayer"></div>
+                <div class="lineVer2"></div>
+                <div class="colresult"></div>
+                <div class="resultTotal"><div class="result">Победитель: <span>???</span></div></div>
+            </div>
+        </div>
+    `
+
+    renderplayField()
+    createResultTable()
+}
+
+function renderplayField() {
+    let $playField = document.querySelector('.playField')
+    for (let i = 1; i <= 9; i++) {
+        $playField.innerHTML += `<div id="${i}" class="moveSquer moveEnabled"></div>`
+    }
+}
 
 function countingWinScores() {
 
@@ -46,10 +88,9 @@ function countingWinScores() {
         return 'Игрок'
     } else if (scorePlayer < scorePC) {
         return 'Компьютер'
+    }else{
+        return 'Ничья'
     }
-
-    console.log(scorePlayer)
-    console.log(scorePC)
 }
 
 function winKresticiOrNoliki() {
